@@ -1,4 +1,6 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, Pressable, Text } from "react-native";
+import { Link } from "expo-router";
+import path from "path";
 
 import { Film } from "@/types";
 
@@ -11,14 +13,18 @@ type FilmListItemProps = {
 };
 
 export default function FilmListItem({ film }: FilmListItemProps) {
+  const id = path.basename(film.url);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{film.title}</Text>
-      <Text style={styles.details}>Episode: {film.episode_id}</Text>
-      <Text style={styles.details}>
-        Released: {formatToHumanReadableDate(film.release_date)}
-      </Text>
-    </View>
+    <Link href={`/films/${id}`} asChild>
+      <Pressable style={styles.container}>
+        <Text style={styles.title}>{film.title}</Text>
+        <Text style={styles.details}>Episode: {film.episode_id}</Text>
+        <Text style={styles.details}>
+          Released Date: {formatToHumanReadableDate(film.release_date)}
+        </Text>
+      </Pressable>
+    </Link>
   );
 }
 
@@ -36,5 +42,6 @@ const styles = StyleSheet.create({
   },
   details: {
     color: colors.white,
+    marginBottom: 4,
   },
 });

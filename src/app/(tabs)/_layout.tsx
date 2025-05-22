@@ -26,12 +26,12 @@ export default function TabsLayout() {
         },
       }}
     >
+      <Tabs.Screen name="index" options={{ href: null }} />
       <Tabs.Screen
-        name="index"
+        name="films"
         options={{
-          title: "Home",
+          headerShown: false,
           tabBarLabel: "Films",
-          headerTitle: "Star Wars",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="film-outline" color={color} size={size} />
           ),
