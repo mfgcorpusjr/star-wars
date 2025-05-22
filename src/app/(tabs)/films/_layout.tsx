@@ -20,7 +20,7 @@ export default function FilmsLayout() {
       }}
     >
       <Stack.Screen name="index" options={{ title: "Films" }} />
-      <Stack.Screen name="[id]" options={{ title: "" }} />
+      <Stack.Screen name="[id]" options={{ title: "Film Details" }} />
     </Stack>
   );
 }

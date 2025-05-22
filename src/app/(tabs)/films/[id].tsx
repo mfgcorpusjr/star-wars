@@ -53,7 +53,6 @@ export default function FilmDetailsScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <Stack.Screen
         options={{
-          title: film.title,
           headerRight: () => (
             <Ionicons name="star-outline" color={colors.tint} size={24} />
           ),
