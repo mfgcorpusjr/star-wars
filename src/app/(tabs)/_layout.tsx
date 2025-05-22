@@ -30,6 +30,7 @@ export default function TabsLayout() {
         name="index"
         options={{
           title: "Home",
+          tabBarLabel: "Films",
           headerTitle: "Star Wars",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="film-outline" color={color} size={size} />
