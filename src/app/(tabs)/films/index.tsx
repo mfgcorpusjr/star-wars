@@ -12,7 +12,7 @@ import colors from "@/constants/colors";
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [films, setFilms] = useState<Film[]>();
+  const [films, setFilms] = useState<Film[]>([]);
 
   useFocusEffect(
     useCallback(() => {

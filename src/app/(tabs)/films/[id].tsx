@@ -13,10 +13,12 @@ import { Film } from "@/types";
 import colors from "@/constants/colors";
 
 import { formatToHumanReadableDate } from "@/utils/date";
+import { isFavorite, toggleFavorite } from "@/utils/favorites";
 
 export default function FilmDetailsScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [film, setFilm] = useState<Film>();
+  const [favorite, setFavorite] = useState(false);
 
   const { id } = useLocalSearchParams();
 
@@ -29,7 +31,9 @@ export default function FilmDetailsScreen() {
           );
           const data = await response.json();
 
-          setFilm(data.result.properties);
+          const filmData = data.result.properties;
+          setFilm(filmData);
+          setFavorite(await isFavorite(filmData));
         } catch (error) {
           console.log(error);
         } finally {
@@ -40,6 +44,15 @@ export default function FilmDetailsScreen() {
       getFilm();
     }, [])
   );
+
+  const handleToggleFavorite = async () => {
+    try {
+      setFavorite((v) => !v);
+      await toggleFavorite(film!);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (isLoading) {
     return <ActivityIndicator color={colors.tint} style={{ padding: 12 }} />;
@@ -54,7 +67,12 @@ export default function FilmDetailsScreen() {
       <Stack.Screen
         options={{
           headerRight: () => (
-            <Ionicons name="star-outline" color={colors.tint} size={24} />
+            <Ionicons
+              name={favorite ? "star" : "star-outline"}
+              color={colors.tint}
+              size={24}
+              onPress={handleToggleFavorite}
+            />
           ),
         }}
       />
