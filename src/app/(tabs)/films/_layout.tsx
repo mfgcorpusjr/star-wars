@@ -14,12 +14,13 @@ export default function FilmsLayout() {
         headerStyle: {
           backgroundColor: colors.black,
         },
+        headerBackButtonDisplayMode: "minimal",
         contentStyle: {
           backgroundColor: colors.darkGrey,
         },
       }}
     >
-      <Stack.Screen name="index" options={{ title: "Films" }} />
+      <Stack.Screen name="index" options={{ title: "Star Wars" }} />
       <Stack.Screen name="[id]" options={{ title: "Film Details" }} />
     </Stack>
   );

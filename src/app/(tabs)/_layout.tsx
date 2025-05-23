@@ -40,7 +40,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="people"
         options={{
-          title: "All Characters",
+          title: "Star Wars Characters",
           tabBarLabel: "People",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="people-outline" color={color} size={size} />
